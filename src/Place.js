@@ -1,50 +1,31 @@
-import React from 'react';
-import {data} from './data.js'
+import React from 'react'
 
-const Place=()=>{
-    const [place,setPlace] = React.useState(data);
-    const [showmore,setShowMore] = React.useState('False') // to expand the details
-    React.useEffect(()=>{
-        setShowMore(!showmore);
-    },[])
-    const removeEle =(key) =>{
-        const newPlace = place.filter((singlePlace) => singlePlace.id != key);
-        setPlace(newPlace);
-    }
+const Place =({id,pname,img,details,price,removeEle})=>{
+    const [showmore,setShowMore] = React.useState(false);
+    
     return(
-    <>
-        {place.map((single)=>{
-            return(
-            <React.Fragment >
-                <div className='box'>
-                    <img src={single.img} alt=" " />
-                    <footer className='content'>
-                        <div className='info'>
-                            <p>{single.pname}</p>
-                            <p className="price">${single.price}</p>
-                        </div>
-                        <div className='detail'>
-                            {showmore ? (
-                                    <p>{single.details}
-                                    <button type='button' className='dtls' onClick={()=>setShowMore(!showmore)}>show less</button>
-                                    </p>
-                                ):(
-                                <p>{single.details.substring(0,125)}...
-                                <button type='button' className='dtls' onClick={()=>setShowMore(!showmore)}>show more</button>
-                                </p>
-                                )
-                            }
-                        </div>
-                        <button type='button' onClick={()=>{removeEle(single.id)}}>Not Interested</button>
-                    </footer>
+        <div className='box'>
+            <img src={img} alt=" " />
+            <footer className='content'>
+                <div className='info'>
+                    <p>{pname}</p>
+                    <p className="price">${price}</p>
                 </div>
-            </React.Fragment>
-        );
-            })}
-        </>
+                <div className='detail'>
+                    {showmore ? (
+                            <p>{details}
+                            <button type='button' className='dtls' onClick={()=>setShowMore(!showmore)}>show less</button>
+                            </p>
+                        ):(
+                        <p>{details.substring(0,125)}...
+                        <button type='button' className='dtls' onClick={()=>setShowMore(!showmore)}>show more</button>
+                        </p>
+                        )
+                    }
+                </div>
+                <button type='button' onClick={()=>{removeEle(id)}}>Not Interested</button>
+            </footer>
+        </div>
     );
-        
 }
-
-
-export default Place ;
+export default Place;

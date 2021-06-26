@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(177, 109, 177);
 }
 :root {
   --clr-box: rgb(219, 219, 219);
@@ -23,6 +24,12 @@ code {
   height: 100%;
   width: 30rem;
   margin: 20px auto;
+  text-align: center;
+}
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 0;
 }
 .box {
   height: auto;
